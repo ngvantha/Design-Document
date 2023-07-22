@@ -1,0 +1,54 @@
+* Trang bán hàng 
+    + danh mục sản phẩm
+    + trang cá nhân hóa người dùng (lịch sử giao dịch các mã hàng đã xem)
+    + các sản phẩm hot, bán chạy, hàng mới
+    + menu động
+    + trang tin tức
+    + tìm kiếm sản phẩm (filter)
+    + trang chi tiết sản phẩm
+    + giỏ hang thanh toán
+    + đăng nhập, đăng ký quên mật khẩu
+    + đa ngôn ngữ
+* Trang quản trị
+    + nhập kho và xuất kho, quản lý hàng tồn
+    + editor để thêm sửa, xóa sản phẩm
+    + đa ngôn ngữ
+    + thông kê hàng tồn, doanh số
+    + barcode
+* Setting project
+    + front
+        - reactJs
+    + backend
+        - java
+    + dataBase
+        - mySQL
+
+dữ liệu
+id:1, ten: a, ngayN: 2023/06/30,SoL1: 1  ,DVT1: 1            , DVT_Name1:Thung, 
+                                SoL2: 4  ,DVT1: 2 con cua SL1, DVT_Name2:loc, 
+                                SoL3: 6  ,DVT3: 3 con cua SL2, DVT_Name3:chai
+                                SoL4: 350,DVT4: 4 con cua SL3, DVT_Name4: ml, 
+                                Đơn giá vốn: 200.000/thung, 
+                                Đơn giá bán cho DVT1: 210.000, code:200
+                                Đơn giá bán cho DVT2: 55.000,  code:55
+                                Đơn giá bán cho DVT3: 10.000,  code: 10
+                                Đơn giá bán cho DVT3: 28,6,    code: 0,00286
+
+C1: tổng số chai bán được trong tháng nhân cho giá vốn và 
+ tổng số tiền bán ra sẽ trừ đi tổng số tiền bán được ta sẽ có doanh thu cho từng sản phẩm
+
+C2: khi bán 1 sản phẩm sẽ tính luôn cột lợi nhuận và lưu lại thành 1 cột,
+ cuối tháng chỉ cần thống kê lợi nhận đó là được
+
+tạo thêm bảng kho hàng khi các mặc hàng được nhập vào sẽ cộng vào bảng,
+còn các hàng xuất hoặc bán lẽ thì sẽ trừ ra khỏi kho hàng
+
+một mặt hàng khi xuất sẽ ghi thành 1 dòng dữ liệu mới nên các dòng dữ liệu lấy ra sẽ bị trùng lấp sẽ lấy dự liệu 
+của ngày gần với ngày hiện tại nhất.
+vb: san pham a trong kho là       2 thung, 12 loc, 6 chai 
+    ngày 1 thì sản phẩm a đã xuát 1 thùng, 4  loc, 2 chai
+    trong kho se còn lai          0 thung, 3  loc, 4 chai
+    ngay 2 thì sản phẩm a đã xuát 0 thung, 2  loc, 2 chai
+    trong kho sẽ còn lai          0 thung, 1  loc, 2 chai
+    
+

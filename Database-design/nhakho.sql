@@ -18,7 +18,7 @@ CREATE TABLE `UNITS`(
 DROP TABLE IF EXISTS `PRODUCTS`;
 CREATE TABLE `PRODUCTS`(
 	PRODUCT_ID 					INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-	PRODUCT_NAME 				NVARCHAR(255) NOT NULL,
+	PRODUCT_NAME 				NVARCHAR(255) NOT NULL UNIQUE KEY,
 	VIEWCOUNT					INT,												-- SO LA XEM SAN PHAM		
     SEOALIAS					NVARCHAR(255),										-- SEO WEB
     -- PRODUCT_IMG_ID  			INT,												-- HINH ANH HIEN THI
@@ -126,6 +126,11 @@ SELECT * FROM products join product_details 				on products.PRODUCT_ID = product
 SELECT * FROM products left join product_details 				 on products.PRODUCT_ID = product_details.PRODUCT_ID 
 					   left join product_detail_units 			 on product_details.PRODUCT_DETAIL_ID = product_detail_units.PRODUCT_DETAIL_ID
                        left join product_detail_unit_inventories on product_detail_units.PRODUCT_DETAIL_UNIT_ID= product_detail_unit_inventories.PRODUCT_DETAIL_UNIT_ID;
+                       
+select products.PRODUCT_NAME,sum(product_detail_unit_inventories.INVENTORY_QUANTITY) FROM products 	left join product_details 				 on products.PRODUCT_ID = product_details.PRODUCT_ID 
+																				left join product_detail_units 			 on product_details.PRODUCT_DETAIL_ID = product_detail_units.PRODUCT_DETAIL_ID
+																				left join product_detail_unit_inventories on product_detail_units.PRODUCT_DETAIL_UNIT_ID= product_detail_unit_inventories.PRODUCT_DETAIL_UNIT_ID                       
+																				GROUP BY products.PRODUCT_NAME, product_detail_units.UNIT_ID;
 
 
 
